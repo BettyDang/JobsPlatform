@@ -87,6 +87,7 @@ export class JobList {
   }
 
   resetSearch(){
+    this.keyword = '';
     this.category = '';
     this.minBudget = 0;
 
