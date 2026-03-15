@@ -1,0 +1,114 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgb(159, 126, 212), rgb(93, 31, 173));
+  }
+  
+  .job-container{
+    background: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  }
+  
+  h2{
+    font-size: 36px;
+    color: azure;
+    margin-bottom: 10px;
+  }
+  
+  p{
+    margin: 8px 0;
+  }
+
+  .proposal-form {
+    max-width: 500px;
+    margin-top: 20px;
+  }
+
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+  }
+
+  .form-row label {
+    width: 120px;
+    font-weight: 500;
+  }
+
+  .form-row input,
+  .form-row textarea {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  .card-actions{
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  
+  .card-actions .btn{
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .card-actions .btn-accept{
+    background: rgb(80, 230, 97);
+    color: #fff;
+  
+    &:hover{
+      background: rgb(15, 39, 12);
+    }
+  }
+
+  .card-actions .btn-submitProposal{
+    background: rgb(111, 218, 134);
+    color: #fff;
+  
+    &:hover{
+      background: rgb(11, 78, 4);
+    }
+  }
+
+  .card-actions .btn-review{
+    background: rgb(111, 218, 134);
+    color: #fff;
+  
+    &:hover{
+      background: rgb(11, 78, 4);
+    }
+  }
+
+  .card-actions .btn-withdraw{
+    background: rgb(150, 150, 247);
+    color: #fff;
+  
+    &:hover{
+      background: rgb(79, 79, 185);
+    }
+  }
+  
+  .error{
+    color: red;
+  }

@@ -1,0 +1,40 @@
+<div class="page-container">
+
+    <div class="job-list">
+    
+        <div *ngFor="let job of jobs" class="job-card">
+    
+            <div class="card-content">
+                <h4>{{ job.title }}</h4>
+
+        
+                <p class="meta">Category: {{ job.category }}</p>
+        
+                <p class="meta">Budget: {{ job.budget }}</p>
+        
+                <p class="description">{{ job.description }}</p>
+        
+                <small class="card-author">
+                Posted by: {{ job.owner?.username || 'Unknwn user'}}
+                </small>
+            </div>
+    
+            <div class="card-actions">
+
+                <button class="btn btn-view" [routerLink]="['/jobs', job.id]">View</button>
+            
+                <!-- <button [routerLink]="['/jobs', job.id, 'edit']" class="btn btn-view">
+                Edit
+                </button> -->
+            
+                <!-- <button (click)="deleteJob(job.id)" class="btn">
+                Delete
+                </button> -->
+    
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

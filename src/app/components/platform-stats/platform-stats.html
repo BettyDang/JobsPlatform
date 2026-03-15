@@ -1,0 +1,35 @@
+<h2>Platform Stats</h2>
+
+<div *ngIf="loading">
+    loading...
+
+</div>
+
+<div *ngIf="errorMessage">
+    {{ errorMessage }}
+
+</div>
+
+<div *ngIf="stats" class="stats-container">
+
+    <div class="stat-card">
+        <h3>Total Users</h3>
+        <p>{{ stats.total_users }}</p>
+    
+    </div>
+    
+    <div class="stat-card">
+        <h3>Active Jobs</h3>
+        <p>{{ stats.active_jobs }}</p>
+    
+    </div>
+    
+    <div class="stat-card">
+        <h3>Total Value Moved</h3>
+        <p>${{ stats.total_value_moved }}</p>
+    
+    </div>
+
+</div>
+
+

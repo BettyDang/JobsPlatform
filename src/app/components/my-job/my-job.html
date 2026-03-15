@@ -1,0 +1,50 @@
+<div class="job-card" *ngFor="let job of jobs">
+
+  <h3>{{ job.title }}</h3>
+
+  <div class="job-form">
+
+    <label>
+      Title
+      <input [(ngModel)]="job.title" placeholder="Update title">
+    </label>
+
+    <label>
+      Description
+      <textarea [(ngModel)]="job.description" placeholder="Update description"></textarea>
+    </label>
+
+    <label>
+      Budget
+      <input type="number" [(ngModel)]="job.budget" placeholder="Update budget" />
+    </label>
+
+    <label>
+      Category
+      <input  [(ngModel)]="job.category" placeholder="Update category /">
+    </label>
+
+    <label>
+      Status
+      <select [(ngModel)]="job.status">
+        <option value="open">Open</option>
+        <option value="in_progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </label>
+    
+    
+  </div>
+
+  <div class="card-actions">
+
+    <button class="btn btn-view" [routerLink]="['/jobs', job.id]">View Details</button>
+    <button [routerLink]="['/jobs', job.id, 'edit']" class="btn btn-view">Edit</button>
+    <!-- <button class="btn btn-update" (click)="updateJob(job.id, job)">Update Job</button> -->
+    
+
+    <button *ngIf="job.status === 'in_progress'" class="btn btn-complete" (click)="completeJob(job)">Complete Job</button>
+  </div>
+
+</div>
+

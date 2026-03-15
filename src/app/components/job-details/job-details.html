@@ -1,0 +1,113 @@
+<h2>Job Details</h2>
+
+<div *ngIf="loading">Loading...</div>
+
+<div class="job-container" *ngIf="job && !loading">
+
+  <h3>{{ job.title }}</h3>
+  <p>{{ job.description }}</p>
+  <p>Budget: {{ job.budget }}</p>
+  <p>Category: {{ job.category }}</p>
+
+  <h4>Owner</h4>
+  <p>{{ job.owner?.name }} ({{ job.owner?.username }})</p>
+
+  <div *ngIf="job.freelancer">
+    <h4>Assigned Freelancer</h4>
+    <!-- <p>{{ job.freelancer?.name }} ({{ job.freelancer?.username }})</p> -->
+  </div>
+
+  <!-- <p>Status: {{ job.status }}</p> -->
+
+  <!-- Proposal Form -->
+
+  <div class="proposal-form" *ngIf="job.status === 'open'">
+
+    <h3>Submit Proposal</h3>
+  
+    <div class="form-row">
+    <label>Price</label>
+      <input type="number" [(ngModel)]="price" min="0">
+    </div>
+
+    <div class="form-row">
+    <label>Cover letter</label>
+      <textarea [(ngModel)]="coverLetter"></textarea>
+    </div>
+  
+    <div class="card-actions">
+    <button class="btn btn-submitProposal"  (click)="submitProposal()" [disabled]="!price">Submit Proposal</button>
+    </div>
+
+  </div>
+  
+  <div *ngIf="job.status !== 'open' && !isOwner" class="closed-message">
+    <p>This job is no longer accepting proposals.</p>
+  </div>
+
+  <!-- Proposal List -->
+
+  <div *ngIf="proposals.length > 0">
+    <h3  *ngIf="isOwner">Proposals for this job</h3>
+    <h3  *ngIf="!isOwner">Your submitted Proposal</h3>
+
+    <div *ngFor="let p of proposals" class="proposal-card">
+      <p><strong>Freelancer: </strong>{{ p.freelancer_id }}</p>
+      <p><strong>Price: </strong>{{ p.price }}</p>
+      <p *ngIf="p.cover_letter"><strong>Cover Letter: </strong> {{ p.cover_letter }}</p>
+      <p *ngIf="p.message"><strong>Message: </strong> {{ p.message }}</p>
+      <p><strong>Status: </strong> {{ p.status }}</p>
+
+      <div class="card-actions">
+      <button class="btn btn-accept" *ngIf="isOwner && p.status === 'pending'"
+        (click)="acceptProposal(p.id!)">Accept</button>
+    
+
+      <button class="btn btn-withdraw" *ngIf="p.freelancer_id === currentUserId && p.status === 'pending'"
+        (click)="withdrawProposal(p.id!)">Withdraw</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="job.status === 'completed' && isOwner && !reviewSubmitted">
+
+    <h3>Leave a Review</h3>
+
+    <div class="form-row">
+      <label>Rating</label>
+      <input type="number" [(ngModel)]="rating" min="1" max="5">
+    </div>
+
+    <div class="form-row">
+    <label>Comment</label>
+      <textarea [(ngModel)]="reviewComment"></textarea>
+    </div>
+
+    <div class="card-actions">
+      <button class="btn btn-review"  (click)="submitReview()">Submit Review</button>
+    </div>
+    
+  </div>
+
+  <div *ngIf="job.status === 'completed' && isOwner && reviewSubmitted">
+
+    <h3>Review Submitted</h3>
+
+    <div class="form-row">
+      <label>Rating</label>
+      <input type="number" [(ngModel)]="rating" min="1" max="5" disabled>
+    </div>
+
+    <div class="form-row">
+    <label>Comment</label>
+      <textarea [(ngModel)]="reviewComment" disabled></textarea>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>

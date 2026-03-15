@@ -1,0 +1,31 @@
+<form (ngSubmit)="submit()">
+
+  <label>
+    Title
+    <input [(ngModel)]="title" name="title" required />
+  </label>
+
+  <label>
+    Description
+    <textarea [(ngModel)]="description" name="description" required></textarea>
+  </label>
+
+  <label>
+    Budget
+    <input type="number" [(ngModel)]="budget" name="budget" required />
+  </label>
+
+  <label>
+    Category
+    <input [(ngModel)]="category" name="category" required />
+  </label>
+
+  <br>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <button type="submit">Create Job</button>
+
+</form>

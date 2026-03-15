@@ -1,0 +1,44 @@
+<div class="form-view">
+    
+    <div class="header">
+        <h1>Edit Job</h1>
+    </div>
+
+    <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+
+  <form (ngSubmit)="submit()" class="job-form">
+    <label>
+      Title
+      <input [(ngModel)]="form.title" name="title" type="text" />
+    </label>
+    <label>
+      Description
+      <input [(ngModel)]="form.description" name="description" type="text" />
+    </label>
+    <label>
+      Budget
+      <input [(ngModel)]="form.budget" name="budget" type="number" />
+    </label>
+    <label>
+      Category
+      <input [(ngModel)]="form.category" name="category" type="text" />
+    </label>
+    
+    <label>
+      Status
+      <select [(ngModel)]="form.status" name="status">
+        <option value="open">Open</option>
+        <option value="in_progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </label>
+    
+
+    <button type="submit" class="btn btn-primary" [disabled]="submitting">{{submitting ? 'Updating...' : 'Update'}}</button>
+  </form>
+
+
+
+
+
+</div>

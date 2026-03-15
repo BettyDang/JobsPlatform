@@ -1,0 +1,56 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgb(154, 75, 165), rgb(95, 8, 91));
+  }
+  
+  .profile-card{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: rgb(255, 255, 255);
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    margin-bottom: 25px;
+  }
+  
+  h2{
+    font-size: 36px;
+    color: rgb(216, 216, 216);
+    margin-bottom: 10px;
+  }
+  
+  ul{
+    padding-left: 20px;
+  }
+  
+  li{
+    margin: 4px 0;
+  }
+
+  //Review section
+
+  .review-card{
+    background: white;
+    border:1px solid #ddd;
+    padding:10px;
+    margin:10px 0;
+    border-radius:8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  h3{
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+  }
+  
+  .error{
+    color: red;
+  }

@@ -1,0 +1,46 @@
+<h2>User Profile</h2>
+
+<div *ngIf="loading">Loading...</div>
+
+<div class="profile-card" *ngIf="user && !loading">
+
+  <h3>{{ user.name }}</h3>
+  <p>
+    Username: {{ user.username }}
+  </p>
+
+  <p>
+    Bio: {{ user.bio }}
+  </p>
+
+  <h4>Skills</h4>
+  <ul>
+    <li *ngFor="let skill of user.skills">
+      {{ skill }}
+    </li>
+  </ul>
+  <p>Average Rating: ⭐ {{ user.rating_avg || '0' }}</p>
+  <p>Completed Jobs: {{ user.completed_jobs || '0' }}</p>
+
+</div>
+
+<h2>Reviews</h2>
+
+  <div *ngIf="reviews.length === 0">
+    No Reviews Yet
+  </div>
+
+  <div *ngFor="let review of reviews" class="review-card">
+    <p><strong>Rating: </strong> ⭐ {{ review.rating }}</p>
+  
+
+  <p>
+    <strong>Comments: </strong> {{ review.comment }}
+  </p>
+
+</div>
+
+
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>

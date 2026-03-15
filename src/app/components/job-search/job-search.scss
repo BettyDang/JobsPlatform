@@ -1,0 +1,86 @@
+:host{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(135deg, rgb(0,101,160), rgb(70,187,241));
+    padding: 20px;
+  }
+  
+  form{
+    background: #ffffffee;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(86, 184, 163, 0.2);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  input{
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0 10px;
+    border: 1px solid rgb(140,165,187);
+    border-radius: 8px;
+  }
+  
+  button{
+    width: 100%;
+    padding: 10px;
+    background: rgb(53, 188, 221);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  
+    &:hover{
+      background: rgb(26,94,139);
+    }
+  }
+  
+  .job-card{
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 12px rgba(77, 190, 153, 0.15);
+  }
+  
+  .error{
+    color: red;
+  }
+
+  .job-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .job-table th{
+    background: rgb(43, 110, 155);
+    color: white;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .job-table td{
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .job-table tr:hover{
+    background: #f5f5f5;
+  }
+  
+  .job-table a{
+    color: rgb(43,110,155);
+    font-weight: bold;
+    text-decoration: none;
+  }

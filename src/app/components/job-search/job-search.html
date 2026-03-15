@@ -1,0 +1,65 @@
+<form (ngSubmit)="searchJobs()">
+
+  <label>
+    Keyword
+    <input [(ngModel)]="keyword" name="keyword" />
+  </label>
+
+  <label>
+    Category
+    <input [(ngModel)]="category" name="category" />
+  </label>
+
+  <label>
+    Min Budget
+    <input [(ngModel)]="minBudget" name="minBudget" />
+  </label>
+
+  <button type="submit">Search</button>
+
+</form>
+
+<!-- <div *ngIf="jobs && jobs.length === 0">
+  <p>No jobs found.</p>
+</div> -->
+
+<!-- SHOW TABLE ONLY IF JOBS EXIST -->
+<div *ngIf="jobs && jobs.length > 0">
+
+  <h3>Results</h3>
+
+  <table class="job-table">
+
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Budget</th>
+        <th>Category</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let job of jobs">
+
+        <td>{{ job.title }}</td>
+
+        <td>{{ job.description }}</td>
+
+        <td>{{ job.budget }}</td>
+
+        <td>{{ job.category }}</td>
+
+        <td>
+          <a [routerLink]="['/jobs', job.id]">View</a>
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
