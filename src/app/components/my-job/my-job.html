@@ -40,7 +40,6 @@
 
     <button class="btn btn-view" [routerLink]="['/jobs', job.id]">View Details</button>
     <button [routerLink]="['/jobs', job.id, 'edit']" class="btn btn-view">Edit</button>
-    <!-- <button class="btn btn-update" (click)="updateJob(job.id, job)">Update Job</button> -->
     
 
     <button *ngIf="job.status === 'in_progress'" class="btn btn-complete" (click)="completeJob(job)">Complete Job</button>

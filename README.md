@@ -7,20 +7,6 @@ Users can create accounts, post jobs, submit proposals, hire freelancers, comple
 The application mimics the core functionality of platforms like **Upwork** or **Fiverr**, focusing on the interaction between the **frontend client and backend services**.
 
 ---
-# Screenshots
-
-## Main Page
-
-
-## Main Page – Statistics and Job Preview
-
-## User Dashboard
-![User Dashboard](screenshots/user-dashboard.png)
-
-## User Postings
-![User Postings](screenshots/user-postings.png)
-
----
 
 # Key Capabilities
 

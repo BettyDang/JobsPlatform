@@ -47,23 +47,6 @@ export class MyJob {
     );
   }
 
-  // updateJob(jobId: string, updates: Partial<Job>) {
-  //   this.jobService.updateJob(jobId, updates).subscribe( {
-  //     next: (updateJob) => {
-  //       // Update local job
-  //       const index = this.jobs.findIndex( j => j.id === jobId);
-  //       if(index !== -1) 
-  //         this.jobs[index] = updateJob;
-  //       console.log('Job updated successfully', updateJob);
-  //     },
-  //     error: (err) => {
-  //       this.errorMessage = err?.error?.message || err.message || `Failed to update job`;
-  //       console.error('Update error: ' , this.errorMessage);
-  //     }
-  //   });
-  // }
-
-  //
   completeJob(job: Job) {
     this.jobService.completeJob(job.id).subscribe( {
       next: () => {

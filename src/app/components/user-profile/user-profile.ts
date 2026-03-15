@@ -26,12 +26,6 @@ export class UserProfile {
   ngOnInit() {
     const username = this.authService.getUsername();
 
-    // if (username){
-    //   this.errorMessage = "Username not Found";
-    //   this.loading = false;
-    //   return;
-    // }
-
     if (username) {
       this.authService.getUserProfile(username).subscribe({
         next: (user) => {

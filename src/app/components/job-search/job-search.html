@@ -1,9 +1,9 @@
 <form (ngSubmit)="searchJobs()">
 
-  <label>
+  <!-- <label>
     Keyword
     <input [(ngModel)]="keyword" name="keyword" />
-  </label>
+  </label> -->
 
   <label>
     Category
@@ -19,9 +19,6 @@
 
 </form>
 
-<!-- <div *ngIf="jobs && jobs.length === 0">
-  <p>No jobs found.</p>
-</div> -->
 
 <!-- SHOW TABLE ONLY IF JOBS EXIST -->
 <div *ngIf="jobs && jobs.length > 0">
