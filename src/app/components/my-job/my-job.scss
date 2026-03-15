@@ -1,6 +1,7 @@
 :host {
   display: flex;
   //justify-content: center;
+  //flex-direction: column;
   align-items: center;
   min-height: 100vh;
   background: linear-gradient(135deg, rgb(211, 146, 61), rgb(136, 54, 22));
@@ -12,18 +13,22 @@
 
 }
 
-
+h2 {
+  width: 100%;
+  text-align: center;
+}
 
 .job-card {
   background-color: #fdfdfd;
   border: 1px solid #ddd;
   border-radius: 12px;
-  padding: 20px;
+  padding: 10px 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  width: 400px;
+  width: 300px;
   transition: transform 0.2s ease;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-2px);
@@ -41,11 +46,18 @@
     flex-direction: column;
     gap: 12px;
 
+    p {
+      font-size: 15px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      margin: 0;
+    }
+
     label {
       display: flex;
       flex-direction: column;
       font-weight: 500;
       color: #555;
+      text-decoration: underline;
 
       input, textarea, select {
         margin-top: 4px;
@@ -95,7 +107,7 @@
   transition: background 0.2s ease;
 }
 
-.card-actions .btn-update{
+.card-actions .btn-delete{
   background: rgb(91, 158, 248);
   color: #fff;
 

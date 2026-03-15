@@ -1,3 +1,5 @@
+<h2>My Posted Jobs</h2>
+
 <div class="job-card" *ngFor="let job of jobs">
 
   <h3>{{ job.title }}</h3>
@@ -6,35 +8,37 @@
 
     <label>
       Title
-      <input [(ngModel)]="job.title" placeholder="Update title">
     </label>
+    <p> {{ job.title }}</p>
 
     <label>
       Description
-      <textarea [(ngModel)]="job.description" placeholder="Update description"></textarea>
     </label>
+    <p> {{ job.description }}</p>
 
     <label>
       Budget
-      <input type="number" [(ngModel)]="job.budget" placeholder="Update budget" />
     </label>
+    <p> {{ job.budget }}</p>
 
     <label>
       Category
-      <input  [(ngModel)]="job.category" placeholder="Update category /">
     </label>
+    <p> {{ job.category }}</p>
 
     <label>
       Status
-      <select [(ngModel)]="job.status">
+      <!-- <select [(ngModel)]="job.status">
         <option value="open">Open</option>
         <option value="in_progress">In Progress</option>
         <option value="completed">Completed</option>
-      </select>
+      </select> -->
     </label>
+    <p> {{ job.status }}</p>
     
     
   </div>
+
 
   <div class="card-actions">
 
@@ -47,3 +51,39 @@
 
 </div>
 
+<h2>Jobs I Applied To</h2>
+<div class="job-card" *ngFor="let p of myProposals">
+
+  <div class="job-form">
+
+    <label>
+      Job ID
+    </label>
+    <p> {{ p.job_id }}</p>
+
+    <label>
+      Cover Letter
+    </label>
+    <p> {{ p.cover_letter}}</p>
+    
+
+    <!-- <label>
+      Message
+      <textarea [(ngModel)]="p.message" placeholder="Message"></textarea>
+    </label> -->
+
+    <label>
+      Status
+    </label>
+    <p> {{ p.status }}</p>
+
+
+    <div class="card-actions">
+    <button class="btn btn-view" [routerLink]="['/jobs', p.job_id]">
+      View Job
+    </button> 
+    <button class="btn btn-delete" *ngIf="p.status === 'pending'" (click)="withdrawProposal(p.id!)">
+      Withdraw
+    </button>
+  </div>
+</div>

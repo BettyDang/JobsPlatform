@@ -1,3 +1,31 @@
+<div  class="stats-wrapper">
+<app-platform-stats></app-platform-stats>
+</div>
+
+<div class="search-bar">
+    <form (ngSubmit)="searchJobs()">
+
+        <label>
+            Keyword
+            <input [(ngModel)]="keyword" name="keyword" />
+          </label>
+      
+        <label>
+          Category
+          <input [(ngModel)]="category" name="category" />
+        </label>
+      
+        <label>
+          Min Budget
+          <input [(ngModel)]="minBudget" name="minBudget" />
+        </label>
+      
+        <button type="submit">Search</button>
+        <button type="button" (click)="resetSearch()">Reset</button>
+      
+      </form>
+</div>
+
 <div class="page-container">
 
     <div class="job-list">

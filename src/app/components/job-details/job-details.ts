@@ -26,6 +26,7 @@ export class JobDetails {
 
   currentUserId = '';
   isOwner = false;
+  freelancer = false;
 
   rating = 0;
   reviewComment = '';
@@ -70,6 +71,7 @@ export class JobDetails {
         this.loading = false;
 
         this.isOwner = this.job.owner?.id === this.currentUserId;
+        this.freelancer = this.job.freelancer?.id === this.currentUserId;
 
         this.loadProposal();
       },
@@ -162,23 +164,23 @@ export class JobDetails {
     }
 
     // withdraw
-    withdrawProposal(id: string) {
+    // withdrawProposal(id: string) {
 
-      if(!confirm("Do you want to withdraw this proposal")){
-        return;
-      }
+    //   if(!confirm("Do you want to withdraw this proposal")){
+    //     return;
+    //   }
 
-      this.proposalService.withdrawProposal(id).subscribe({
-        next: () => {
-          alert('Proposal withdrawn');
-          this.loadProposal();
-        },
-        error: (err) => {
-          alert('Failed to withdraw proposal');
-          console.log(err);
-        }
-      });
-    }
+    //   this.proposalService.withdrawProposal(id).subscribe({
+    //     next: () => {
+    //       alert('Proposal withdrawn');
+    //       this.loadProposal();
+    //     },
+    //     error: (err) => {
+    //       alert('Failed to withdraw proposal');
+    //       console.log(err);
+    //     }
+    //   });
+    // }
 
     submitReview() {
 
@@ -194,10 +196,18 @@ export class JobDetails {
         return;
       }
 
+      let targetId: string;
+
+      if(this.isOwner){
+        targetId = this.job.freelancer!.id;
+      } else {
+        targetId = this.job.owner!.id;
+      }
+
 
       this.reviewService.submitReview(
         this.job.id,
-        this.job.freelancer.id,
+        targetId,
         this.rating,
         this.reviewComment
       ).subscribe ({
@@ -209,6 +219,8 @@ export class JobDetails {
           this.authService.getUserProfile(this.job?.freelancer?.username!).subscribe({
             next: (user) => {
               console.log("Updated freelancer rating: ", user.rating_avg);
+
+              this.loadJob();
             }
           })
         },

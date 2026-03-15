@@ -4,9 +4,10 @@ import { Job, JobService } from '../../services/job.service';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, reduce } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { CssSelector } from '@angular/compiler';
+import { Proposal, ProposalService } from '../../services/proposal.service';
 
 @Component({
   selector: 'app-my-job',
@@ -20,11 +21,13 @@ export class MyJob {
 
   jobs: Job[] = [];
   errorMessage = '';
+  myProposals: Proposal[] =[];
 
   constructor(
     private readonly http: HttpClient,
     private jobService: JobService,
     private readonly authService: AuthService,
+    private readonly proposalService: ProposalService,
 
   ) {}
 
@@ -37,7 +40,17 @@ export class MyJob {
         this.errorMessage = err?.error?.error;
       }
     });
+
+    this.proposalService.getMyBids().subscribe({
+      next: (res) => {
+        this.myProposals = res;
+      },
+      error: (err) => {
+        this.errorMessage = err?.error?.error;
+      }
+    });
   }
+
 
   updateJob(id: string, updates: Partial<Job>): Observable<Job> {
     return this.http.patch<Job>(
@@ -74,5 +87,34 @@ export class MyJob {
       }
     });
   }
+
+  loadMyProposals() {
+    this.proposalService.getMyBids().subscribe({
+      next: (res) => {
+        this.myProposals = res;
+      },
+      error: (err) => {
+        this.errorMessage = err?.error?.error;
+      }
+    });
+  }
+
+  withdrawProposal(id: string) {
+    if(!confirm("Do you want to withdraw this proposal")){
+      return;
+    }
+
+    this.proposalService.withdrawProposal(id).subscribe({
+      next: () => {
+        alert('Proposal withdrawn');
+        this.loadMyProposals();
+      },
+      error: (err) => {
+        alert('Failed to withdraw proposal');
+        console.log(err);
+      }
+    });
+  }
+
 
 }

@@ -13,7 +13,7 @@ export interface Job {
   category: string;
   owner?: {id: string; name: string; username: string};
   freelancer?: {id: string; name: string; username?: string};
-  status: 'open' | 'in_progress' | 'completed' | 'closed';
+  status: 'open' | 'in_progress' | 'completed' | 'closed' | 'pending' ;
 }
 
 @Injectable({
@@ -91,6 +91,7 @@ export class JobService {
       { headers: new HttpHeaders(this.authService.getAuthHeaders()) }
     );
   }
+
 
   // Complete job
   completeJob(id: string): Observable<any>{

@@ -3,15 +3,22 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Job, JobService } from '../../services/job.service';
 import { AuthService } from '../../services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { PlatformStatsComponent } from '../platform-stats/platform-stats';
 
 @Component({
   selector: 'app-job-list',
-  imports: [ CommonModule, RouterModule],
+  imports: [ CommonModule, RouterModule, FormsModule, PlatformStatsComponent],
   templateUrl: './job-list.html',
   styleUrls: ['./job-list.scss'],
 })
 export class JobList {
   jobs: Job[] = [];
+  keyword = '';
+  category = '';
+  minBudget = 0;
+  errorMessage = '';
+  searchPerformed = false;
 
   constructor(
     private readonly jobService: JobService,
@@ -59,6 +66,31 @@ export class JobList {
         console.error('Failed to delete job', err);
       }
     })
+  }
+
+  searchJobs() {
+    this.jobService.searchJobs({
+      keyword: this.keyword,
+      category: this.category,
+      min_budget: this.minBudget,
+    }).subscribe({
+      next: (res) => {
+        this.jobs = res;  
+        this.searchPerformed = true;
+      },
+      error: (err: any) => {
+        console.error('Error:', err); 
+        this.errorMessage = err?.error?.message || 'Search failed';  
+        this.searchPerformed = true;
+      },
+    });
+  }
+
+  resetSearch(){
+    this.category = '';
+    this.minBudget = 0;
+
+    this.loadJobs();
   }
 
 

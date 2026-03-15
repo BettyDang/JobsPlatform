@@ -21,7 +21,7 @@ export class JobEdit {
     description: '',
     budget: 0,
     category: '',
-    status: 'open' as 'open' | 'in_progress' | 'completed' | 'closed'
+    status: 'open' as 'open' | 'in_progress' | 'completed' | 'closed' | 'pending'
   };
 
   constructor(
