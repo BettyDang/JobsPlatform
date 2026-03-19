@@ -1,89 +1,90 @@
 <h2>My Posted Jobs</h2>
 
-<div class="job-card" *ngFor="let job of jobs">
+<div class="job-list">
 
-  <h3>{{ job.title }}</h3>
+  <div class="job-card" *ngFor="let job of jobs">
 
-  <div class="job-form">
+    <h3>{{ job.title }}</h3>
 
-    <label>
-      Title
-    </label>
-    <p> {{ job.title }}</p>
+    <div class="job-form">
 
-    <label>
-      Description
-    </label>
-    <p> {{ job.description }}</p>
+      <label>
+        Title
+      </label>
+      <p> {{ job.title }}</p>
 
-    <label>
-      Budget
-    </label>
-    <p> {{ job.budget }}</p>
+      <label>
+        Description
+      </label>
+      <p> {{ job.description }}</p>
 
-    <label>
-      Category
-    </label>
-    <p> {{ job.category }}</p>
+      <label>
+        Budget
+      </label>
+      <p> {{ job.budget }}</p>
 
-    <label>
-      Status
-      <!-- <select [(ngModel)]="job.status">
-        <option value="open">Open</option>
-        <option value="in_progress">In Progress</option>
-        <option value="completed">Completed</option>
-      </select> -->
-    </label>
-    <p> {{ job.status }}</p>
-    
-    
-  </div>
+      <label>
+        Category
+      </label>
+      <p> {{ job.category }}</p>
 
-
-  <div class="card-actions">
-
-    <button class="btn btn-view" [routerLink]="['/jobs', job.id]">View Details</button>
-    <button [routerLink]="['/jobs', job.id, 'edit']" class="btn btn-view">Edit</button>
-    
-
-    <button *ngIf="job.status === 'in_progress'" class="btn btn-complete" (click)="completeJob(job)">Complete Job</button>
-  </div>
-
-</div>
-
-<h2>Jobs I Applied To</h2>
-<div class="job-card" *ngFor="let p of myProposals">
-
-  <div class="job-form">
-
-    <label>
-      Job ID
-    </label>
-    <p> {{ p.job_id }}</p>
-
-    <label>
-      Cover Letter
-    </label>
-    <p> {{ p.cover_letter}}</p>
-    
-
-    <!-- <label>
-      Message
-      <textarea [(ngModel)]="p.message" placeholder="Message"></textarea>
-    </label> -->
-
-    <label>
-      Status
-    </label>
-    <p> {{ p.status }}</p>
+      <label>
+        Status
+        <!-- <select [(ngModel)]="job.status">
+          <option value="open">Open</option>
+          <option value="in_progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select> -->
+      </label>
+      <p> {{ job.status }}</p>
+      
+      
+    </div>
 
 
     <div class="card-actions">
-    <button class="btn btn-view" [routerLink]="['/jobs', p.job_id]">
-      View Job
-    </button> 
-    <button class="btn btn-delete" *ngIf="p.status === 'pending'" (click)="withdrawProposal(p.id!)">
-      Withdraw
-    </button>
+
+      <button class="btn btn-view" [routerLink]="['/jobs', job.id]">View Details</button>
+      <button [routerLink]="['/jobs', job.id, 'edit']" class="btn btn-view">Edit</button>
+      
+
+      <button *ngIf="job.status === 'in_progress'" class="btn btn-complete" (click)="completeJob(job)">Complete Job</button>
+    </div>
+
+  </div>
+</div>
+
+<h2>Jobs I Applied To</h2>
+
+<div class="job-list">
+
+  <div class="job-card" *ngFor="let p of myProposals">
+
+    <div class="job-form">
+
+      <label>
+        Job ID
+      </label>
+      <p> {{ p.job_id }}</p>
+
+      <label>
+        Cover Letter
+      </label>
+      <p> {{ p.cover_letter}}</p>
+
+      <label>
+        Status
+      </label>
+      <p> {{ p.status }}</p>
+
+
+      <div class="card-actions">
+      <button class="btn btn-view" [routerLink]="['/jobs', p.job_id]">
+        View Job
+      </button> 
+      <button class="btn btn-delete" *ngIf="p.status === 'pending'" (click)="withdrawProposal(p.id!)">
+        Withdraw
+      </button>
+    </div>
   </div>
 </div>

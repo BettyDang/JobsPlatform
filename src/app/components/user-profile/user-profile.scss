@@ -1,56 +1,175 @@
+// :host{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     min-height: 100vh;
+//     padding: 40px 20px;
+//     background: linear-gradient(135deg, rgb(154, 75, 165), rgb(95, 8, 91));
+//   }
+  
+//   .profile-card{
+//     font-family: Verdana, Geneva, Tahoma, sans-serif;
+//     background: rgb(255, 255, 255);
+//     padding: 25px;
+//     border-radius: 10px;
+//     width: 100%;
+//     max-width: 500px;
+//     box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+//     margin-bottom: 25px;
+//   }
+  
+//   h2{
+//     font-size: 36px;
+//     color: rgb(216, 216, 216);
+//     margin-bottom: 10px;
+//   }
+  
+//   ul{
+//     padding-left: 20px;
+//   }
+  
+//   li{
+//     margin: 4px 0;
+//   }
+
+//   //Review section
+
+//   .review-card{
+//     background: white;
+//     border:1px solid #ddd;
+//     padding:10px;
+//     margin:10px 0;
+//     border-radius:8px;
+//     width: 100%;
+//     max-width: 500px;
+//     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+//   }
+
+//   h3{
+//     color: rgb(0, 0, 0);
+//     margin-bottom: 10px;
+//   }
+  
+//   .error{
+//     color: red;
+//   }
+
 :host{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, rgb(154, 75, 165), rgb(95, 8, 91));
-  }
-  
-  .profile-card{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background: rgb(255, 255, 255);
-    padding: 25px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-    margin-bottom: 25px;
-  }
-  
-  h2{
-    font-size: 36px;
-    color: rgb(216, 216, 216);
-    margin-bottom: 10px;
-  }
-  
-  ul{
-    padding-left: 20px;
-  }
-  
-  li{
-    margin: 4px 0;
-  }
+  display:block;
+  min-height:100vh;
+  //background:#f5f7fb;
+  background: linear-gradient(135deg, rgb(134, 163, 187), rgb(68, 104, 180));
+  padding:40px 20px;
+}
 
-  //Review section
+.page-container{
+  max-width:700px;
+  margin:0 auto;
+}
 
-  .review-card{
-    background: white;
-    border:1px solid #ddd;
-    padding:10px;
-    margin:10px 0;
-    border-radius:8px;
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  }
+/* Title */
+h2{
+  font-size:26px;
+  color:#1f2937;
+  margin-bottom:20px;
+}
 
-  h3{
-    color: rgb(0, 0, 0);
-    margin-bottom: 10px;
-  }
-  
-  .error{
-    color: red;
-  }
+/* Profile card */
+.profile-card{
+  background:white;
+  padding:24px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.06);
+  margin-bottom:30px;
+}
+
+/* Header */
+.profile-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+h3{
+  margin:0;
+  font-size:20px;
+}
+
+.username{
+  color:#6b7280;
+  font-size:13px;
+}
+
+/* Bio */
+.bio{
+  margin:15px 0;
+  font-size:14px;
+  color:#374151;
+}
+
+/* Stats */
+.stats{
+  display:flex;
+  gap:15px;
+  margin:15px 0;
+}
+
+.stat-box{
+  background:#f9fafb;
+  padding:12px;
+  border-radius:10px;
+  flex:1;
+  text-align:center;
+}
+
+.stat-value{
+  font-weight:600;
+  font-size:16px;
+}
+
+.stat-label{
+  font-size:12px;
+  color:#6b7280;
+}
+
+/* Skills */
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.skill-tag{
+  background:#e0f2fe;
+  color:#0284c7;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+/* Reviews */
+.reviews-section{
+  margin-top:20px;
+}
+
+.review-card{
+  background:white;
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+.rating{
+  font-weight:600;
+}
+
+.comment{
+  font-size:14px;
+  color:#374151;
+}
+
+.error{
+  color:red;
+}

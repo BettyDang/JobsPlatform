@@ -1,141 +1,105 @@
 :host {
-  display: flex;
-  //justify-content: center;
-  //flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+  display: block;
   background: linear-gradient(135deg, rgb(211, 146, 61), rgb(136, 54, 22));
-  padding: 20px;
-  flex-wrap: wrap;
-  padding-top: 30px;
-  padding-left: 140px;
-  gap: 20px;
-
+  min-height: 100vh;
+  padding: 40px 20px;
 }
 
-h2 {
-  width: 100%;
-  text-align: center;
+h2{
+  text-align:center;
+  margin-bottom:20px;
+  color:#111827;
 }
 
-.job-card {
-  background-color: #fdfdfd;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  width: 300px;
-  transition: transform 0.2s ease;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+label {
+  display: flex;
   flex-direction: column;
+  font-weight: 500;
+  color: #000000;
+  text-decoration: underline;
+}
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* job-list */
+.job-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(200px,1fr));
+  gap: 16px;
+}
+
+/* CARD */
+.job-card{
+  background:#fff;
+  padding:8px;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  border:1px solid rgba(0,0,0,0.05);
+  transition:0.2s;
+
+  &:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
   }
+}
 
-  h3 {
-    margin-bottom: 15px;
-    color: #333;
-    text-align: center;
-  }
+/* HEADER */
+.card-header{
+  display:flex;
+  margin-bottom: 4px;
+  justify-content:space-between;
+  align-items:center;
+}
 
-  .job-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.card-header h4{
+  margin:0;
+  font-size: 14px;
+  font-weight:600;
+}
 
-    p {
-      font-size: 15px;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      margin: 0;
-    }
+/* DESCRIPTION */
+.description{
+  display: flex;
+  overflow: hidden;
+  font-size:13px;
+  color:#374151;
+  margin:6px 0;
+}
 
-    label {
-      display: flex;
-      flex-direction: column;
-      font-weight: 500;
-      color: #555;
-      text-decoration: underline;
-
-      input, textarea, select {
-        margin-top: 4px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 14px;
-        transition: border-color 0.2s ease;
-
-        &:focus {
-          outline: none;
-          border-color: #5b9ef8;
-        }
-      }
-
-      textarea {
-        resize: vertical;
-        min-height: 60px;
-      }
-    }
-
-    
-
-  
-  }
+.meta{
+  display:flex;
+  gap:8px;
+  font-size:12px;
+  color:#6b7280;
 }
 
 .card-actions{
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #eee;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
+  margin-top:15px;
+  display:flex;
+  gap:8px;
 }
 
-.card-actions .btn{
-  padding: 8px 14px;
-  font-size: 14px;
-  border-radius: 6px;
-  font-weight: 500;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.2s ease;
+/* BUTTONS */
+.btn{
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  border:none;
+  cursor:pointer;
 }
 
-.card-actions .btn-delete{
-  background: rgb(91, 158, 248);
-  color: #fff;
+.btn-view{ background:#6366f1; color:white; }
+.btn-edit{ background:#0ea5e9; color:white; }
+.btn-complete{ background:#22c55e; color:white; }
+.btn-delete{ background:#ef4444; color:white; }
 
-  &:hover{
-    background: rgb(70, 128, 232);
-  }
+/* STATUS */
+.status-badge{
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:20px;
+  font-weight:500;
 }
 
-.card-actions .btn-view{
-  background: rgb(115, 27, 173);
-  color: #fff;
-
-  &:hover{
-    background: rgb(182, 122, 194);
-  }
-}
-
-.card-actions .btn-complete {
-  background: rgb(76, 175, 80); /* green */
-  color: #fff;
-
-  &:hover {
-    background: rgb(56, 142, 60);
-  }
-}
-
-.error {
-  color: #ff4d4f;
-  font-weight: 500;
-  margin-bottom: 15px;
-}
+.status-badge.open { background:#e0f2fe; color:#0284c7; }
+.status-badge.in_progress { background:#fff3cd; color:#856404; }
+.status-badge.completed { background:#d4edda; color:#155724; }
+.status-badge.pending { background:#fef3c7; color:#92400e; }

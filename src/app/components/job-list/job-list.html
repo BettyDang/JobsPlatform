@@ -31,28 +31,32 @@
     <div class="job-list">
     
         <div *ngFor="let job of jobs" class="job-card">
-    
-            <div class="card-content">
-                <h4>{{ job.title }}</h4>
 
-        
-                <p class="meta">Category: {{ job.category }}</p>
-        
-                <p class="meta">Budget: {{ job.budget }}</p>
-        
-                <p class="description">{{ job.description }}</p>
-        
-                <small class="card-author">
-                Posted by: {{ job.owner?.username || 'Unknwn user'}}
-                </small>
-            </div>
-    
-            <div class="card-actions">
+            <span class="status-badge" [ngClass]="job.status">
+              {{ job.status.replace('_', ' ') }}
+            </span>
+      
+              <div class="card-content">
+                  <h4>{{ job.title }}</h4>
 
-                <button class="btn btn-view" [routerLink]="['/jobs', job.id]">View</button>
-            
-    
-            </div>
+          
+                  <p class="meta">Category: {{ job.category }}</p>
+          
+                  <p class="budget">Budget: {{ job.budget }}</p>
+          
+                  <p class="description">{{ job.description }}</p>
+          
+                  <small class="card-author">
+                  Posted by: {{ job.owner?.username || 'Unknwn user'}}
+                  </small>
+              </div>
+      
+              <div class="card-actions">
+
+                  <button class="btn btn-view" [routerLink]="['/jobs', job.id]">View</button>
+              
+      
+              </div>
 
         </div>
 

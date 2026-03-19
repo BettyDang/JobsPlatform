@@ -1,46 +1,58 @@
-<h2>User Profile</h2>
+<div class="page-container">
 
-<div *ngIf="loading">Loading...</div>
+  <h2>User Profile</h2>
 
-<div class="profile-card" *ngIf="user && !loading">
+  <div *ngIf="loading">Loading...</div>
 
-  <h3>{{ user.name }}</h3>
-  <p>
-    Username: {{ user.username }}
-  </p>
+  <div class="profile-card" *ngIf="user && !loading">
 
-  <p>
-    Bio: {{ user.bio }}
-  </p>
+    <div class="profile-header">
 
-  <h4>Skills</h4>
-  <ul>
-    <li *ngFor="let skill of user.skills">
-      {{ skill }}
-    </li>
-  </ul>
-  <p>Average Rating: ⭐ {{ user.rating_avg || '0' }}</p>
-  <p>Completed Jobs: {{ user.completed_jobs || '0' }}</p>
+      <div>
+        <h3>{{ user.name }}</h3>
+        <p class="username"> {{ user.username }}</p>
+      </div>
+    </div>
 
-</div>
+    <p class="Bio"> {{ user.bio }} </p>
 
-<h2>Reviews</h2>
+    <div class="stats">
+      <div class="stat-box">
+        <p class="stat-value">⭐ {{ user.rating_avg || '0' }}</p>
+        <p class="stat-label">Rating</p>
+      </div>
 
-  <div *ngIf="reviews.length === 0">
-    No Reviews Yet
+      <div class="stat-box">
+        <p class="stat-value">{{ user.completed_jobs || '0' }}</p>
+        <p class="stat-label">Completed Jobs</p>
+      </div>
+    </div>
+
+    <h4>Skills</h4>
+    <div class="skills">
+      <span *ngFor="let skill of user.skills" class="skill-tag">
+        {{ skill }}
+      </span>
+    </div>
+    <!-- <p>Average Rating: ⭐ {{ user.rating_avg || '0' }}</p>
+    <p>Completed Jobs: {{ user.completed_jobs || '0' }}</p> -->
+
   </div>
 
-  <div *ngFor="let review of reviews" class="review-card">
-    <p><strong>Rating: </strong> ⭐ {{ review.rating }}</p>
-  
+  <h2>Reviews</h2>
 
-  <p>
-    <strong>Comments: </strong> {{ review.comment }}
-  </p>
+    <div *ngIf="reviews.length === 0">
+      No Reviews Yet
+    </div>
 
+    <div *ngFor="let review of reviews" class="review-card">
+      <p class="rating">⭐ {{ review.rating }}</p>
+      <p class="comment">{{ review.comment }}</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
 </div>
 
 
-<div *ngIf="errorMessage" class="error">
-  {{ errorMessage }}
-</div>
